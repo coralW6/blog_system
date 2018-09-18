@@ -1,21 +1,24 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import test from '@/components/test'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(Router)
+// 引入组件
+import index from "../pages/index/index.vue";
+import about from "../pages/about/index.vue";
 
-export default new Router({
-  routes: [
+Vue.use(VueRouter);
+
+const routes = [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+        path:"/",
+        component: index
     },
     {
-      path: '/test',
-      name: 'test',
-      component: test
+        path: "/about",
+        component: about
     }
-  ]
+]
+
+var router =  new VueRouter({
+    routes
 })
+export default router;
