@@ -3,7 +3,7 @@
 
 <template>
     <div>
-        <h1 class="hello">about</h1>
+        <h1 class="helffflo">about</h1>
         <p>{{aboutMsg}}</p>
     </div>
 </template>
