@@ -14,5 +14,5 @@ Vue.use(ElementUI)
 new Vue({
   el: '#app',
   router,  // 注入到根实例中
-  render: h => h(App)
+  render: h => h(App),
 });
