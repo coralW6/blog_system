@@ -1,8 +1,7 @@
 export default {
     data: function() {
         return {
-            title: title,
-            dirId: dirId,
+            
         }
     }, 
     updated() {//路径及按键操作时调用
@@ -16,7 +15,6 @@ export default {
     methods: {
         updateForcus() {
             console.log(">>>>>", this.$route.path);
-            // console.log(title, dirId);
         }
     }
 }

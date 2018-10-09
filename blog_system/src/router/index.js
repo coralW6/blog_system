@@ -6,18 +6,19 @@ import VueRouter from "vue-router";
 import index from "../pages/index/index.vue";
 import blogList from "../pages/blogList/index.vue";
 import blogDetail from "../pages/blogDetail/index.vue";
-import admin from "../pages/admin/index.vue"
+import admin from "../pages/admin/index.vue";
+import editBlog from "../pages/editBlog/index.vue";
 
 Vue.use(VueRouter);
 
 const childrenComponent = [
     {
-        path:"/dirId/:id",
+        path:"/blogList/:id",
         name: "blogList",
         component: blogList,
     },
     {
-        path:"/detail/:id",
+        path:"/blogDetail/:id",
         name: "blogDetail",
         component: blogDetail
     }
@@ -41,6 +42,12 @@ const routes = [
         name: "admin",
         component: admin,
     },
+    {
+        path:"/editBlog/:id",
+        name: "editBlog",
+        component: editBlog,
+    },
+    
 ]
 
 var router =  new VueRouter({

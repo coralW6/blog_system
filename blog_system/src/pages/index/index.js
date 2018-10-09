@@ -1,11 +1,5 @@
-import router from "../../router";
-
-// import blogList from '@/pages/blogList/index.vue'
 
 export default {
-    // components: {
-    //     blogList
-    // },
     data: function() {
         return {
             showBlogList: true,
@@ -16,25 +10,25 @@ export default {
                     name: "导航一",
                     childrenList: 
                         [
-                            {name: "选项一", index: "/dirId/1"},
-                            {name: "选项二", index: "/dirId/2"},
+                            {name: "选项一", index: "/blogList/1"},
+                            {name: "选项二", index: "/blogList/2"},
                         ],
                     childrenDir: {
                         name: "选项三", 
-                        index: "/dirId/3", 
+                        index: "/blogList/3", 
                         childrenList: [
-                            {name: "选项666", index: "/dirId/10"},
-                            {name: "选项777", index: "/dirId/11"},
+                            {name: "选项666", index: "/blogList/10"},
+                            {name: "选项777", index: "/blogList/11"},
                         ]
                     },
                 },
                 {
-                    index: "/dirId/1100",
+                    index: "/blogList/1100",
                     name: "导航二",
                     childrenList: [
-                        {name: "选项1", index: "/dirId/4"},
-                        {name: "选项2", index: "/dirId/5"},
-                        {name: "选项3", index: "/dirId/6"},
+                        {name: "选项1", index: "/blogList/4"},
+                        {name: "选项2", index: "/blogList/5"},
+                        {name: "选项3", index: "/blogList/6"},
                     ]
                 },
             ],
@@ -51,12 +45,5 @@ export default {
     methods: {
         updateForcus() {
         },
-        
-        showDetail() {
-            this.$router.push({
-                name: "blogDetail",
-            });
-            console.log("showDetail");
-        }
     }
 }

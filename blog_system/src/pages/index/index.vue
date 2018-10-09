@@ -12,7 +12,6 @@
             <el-header class="header" width="300px" style="height: 80px">
                 <div class="title">打杂流水账</div>
                 <div class="index">首页</div>
-                <!-- <div v-on:click="showDetail()">详情页</div> -->
             </el-header>
             <el-container class="main">
                 <el-aside class="left-aside" width="300px">
