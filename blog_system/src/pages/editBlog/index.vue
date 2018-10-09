@@ -3,5 +3,8 @@
 <template>
     <div class="total">
         editBlog
+        <div>
+             <mavon-editor></mavon-editor>
+        </div>
     </div>
 </template>

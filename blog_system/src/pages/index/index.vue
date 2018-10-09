@@ -8,7 +8,7 @@
 <style lang='less' scoped src='./index.less'></style>
 <template>
     <div class="total">
-        <el-container style="height: 700px; border: 1px solid #eee">
+        <el-container style="height: 640px; border: 1px solid #eee">
             <el-header class="header" width="300px" style="height: 80px">
                 <div class="title">打杂流水账</div>
                 <div class="index">首页</div>
@@ -38,7 +38,7 @@
                     <router-view></router-view>
                 </el-main>
             </el-container>
-            <el-footer class="footer">Copyright © 2018-2018 打杂流水账 coral66.com All Rights Reserved. | 京ICP备18001768号-1</el-footer>
+            <!-- <el-footer class="footer">Copyright © 2018-2018 打杂流水账 coral66.com All Rights Reserved. | 京ICP备18001768号-1</el-footer> -->
         </el-container>
     </div>
 </template>

@@ -24,6 +24,14 @@ const childrenComponent = [
     }
 ]
 
+const adminChildrenComponent = [
+    {
+        path:"/editBlog/:id",
+        name: "editBlog",
+        component: editBlog,
+    },
+]
+
 const routes = [
     {
         path:"/",
@@ -41,13 +49,8 @@ const routes = [
         path:"/admin",
         name: "admin",
         component: admin,
+        children: adminChildrenComponent,
     },
-    {
-        path:"/editBlog/:id",
-        name: "editBlog",
-        component: editBlog,
-    },
-    
 ]
 
 var router =  new VueRouter({
