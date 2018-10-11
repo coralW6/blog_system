@@ -1,4 +1,5 @@
 
+import blogService from '../../utils/services';
 export default {
     data: function() {
         return {
@@ -44,6 +45,19 @@ export default {
 
     methods: {
         updateForcus() {
+            blogService.sendRequest({
+                url: "/test",
+                method: "POST",
+                data: {
+                    "a": 1,
+                    "b": 2,
+                },
+                doneHandler: function(backendData) {
+                    console.log(backendData);
+                }
+            });
+            
         },
+         
     }
 }
