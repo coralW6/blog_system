@@ -87,33 +87,22 @@ const blogService = {
         var method = options.method || 'GET';
         var header = options.header || {};
         var defaultHeader = {
-            "content-type": "application/json",
+            // "content-type": "application/json",
             // 'content-type': 'application/x-www-form-urlencoded',
-            'X-Requested-With': 'XMLHttpRequest'
+            // 'X-Requested-With': 'XMLHttpRequest'
+            // Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
         };
         if (method === 'POST') {
             header = extend(true, header, defaultHeader);
         }
-        //加loggerId
-        // var profile = wx.getStorageSync('PROFILE');
-        // var loggerId = '';
-        // if (profile) {
-        //     var timeStamp = +new Date();
-        //     loggerId = profile.userId + '_' + timeStamp;
-        // }
-        //每个请求加上token 和appVersion
-        // var data = extend(true, options.data || {}, {token: wx.getStorageSync(TOKEN), appVersion: config.APP_VERSION, loggerId: loggerId});
-        // console.log("TOKEN:" + wx.getStorageSync(TOKEN));
 
+        console.log(options.url, options.data, method, header);
         axios({
             url: options.url,
             data: options.data,
             method: method,
             header: header,
-            dataType: options.dataType || 'json',
-            
         }).then(function (response) {
-            // options.isShowLoading && wx.hideLoading();
             //resData为后端的整体返回
             var resData = response.data;
             //具体信息还在里层的data里
@@ -142,7 +131,7 @@ const blogService = {
             } else {
                 if (options.retryCount && options.retryCount >= 3) {
                     blogService.showErrorDialog(err.errMsg);
-                    alert('连接失败，请重试');
+                    // alert('连接失败，请重试');
                 }
                 else {
                     options.retryCount = options.retryCount ? (++options.retryCount) : 1;

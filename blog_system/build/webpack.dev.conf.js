@@ -11,14 +11,11 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
 /*********************** mock数据 begin ***************************/
-const express = require('express')
-const app = express()
-const appData = require('../data.json')
-const seller = appData.seller
-const goods = appData.goods
-const ratings = appData.ratings
-const apiRouter = express.Router()
-app.use('/api',apiRouter)
+// const express = require('express')
+// const app = express()
+// const appData = require('../mock/getDirList.json')
+// const apiRouter = express.Router()
+// app.use('/api',apiRouter)
 /*********************** mock数据 end ***************************/
 
 
@@ -57,26 +54,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     /*********************** mock数据 begin ***************************/
 
-    before(app) {
-      app.get('/api/seller',(req, res) => {
-        res.json({
-          errno: 0,
-          data: ratings
-        });
-      });
-      app.get('/api/goods',(req, res) => {
-        res.json({
-          errno: 0,
-          data: ratings
-        });
-      });
-      app.get('/api/ratings',(req, res) => {
-        res.json({
-          errno: 0,
-          data: ratings
-        });
-      });
-    },
+    // before(app) {
+    //   app.get('/api/test',(req, res) => {
+    //     // console.log("appData", appData);
+    //     res.json({
+    //       "status": 200,
+    //       "data": 12,
+    //     });
+    //   });
+    // },
     /*********************** mock数据 end ***************************/
 
   },
