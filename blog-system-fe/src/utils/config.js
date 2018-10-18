@@ -1,8 +1,7 @@
 const devServer = 'http://127.0.0.1:10000'
-// const testServer = 'https://test-kingofword.genshuixue.com'
-    // const betaServer = 'https://beta-kingofword.genshuixue.com'
-// const betaServer = 'https://kingofword.genshuixue.com'
-// const proServer = 'https://kingofword.genshuixue.com'
+const testServer = 'http://127.0.0.1:10000'
+const betaServer = 'http://127.0.0.1:10000'
+const proServer = 'http://127.0.0.1:10000'
 
 let path = null;
 // es6 版本
@@ -15,11 +14,12 @@ if (process.env.NODE_ENV  === 'dev') {
 } else if (process.env.NODE_ENV === 'production') {
     path = proServer;
 }
+const rootPath = '/app';
 const config = {
     // 服务地址
     SERVER_HOST: path,
     PATHS: {
-        getBlogDirList: '/getBlogDirList',
+        getBlogDirList: rootPath + '/getBlogDirList',
     },
 };
 

@@ -5,7 +5,7 @@
  */
 
 exports.route = {
-    url: "/getBlogDirList",
+    url: "/app/getBlogDirList",
     retData: {
         code: 0,
         msg: "",
