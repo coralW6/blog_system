@@ -51,6 +51,11 @@ const routes = [
         component: admin,
         children: adminChildrenComponent,
     },
+    // {
+    //     path:"/editBlog/:id",
+    //     name: "editBlog",
+    //     component: editBlog,
+    // },
 ]
 
 var router =  new VueRouter({

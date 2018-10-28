@@ -1,0 +1,23 @@
+# 创建菜单表
+CREATE TABLE `blog_menu` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `name` varchar(40) NOT NULL DEFAULT '' COMMENT '节点名称',
+  `parent_id` int(11) unsigned NOT NULL COMMENT '父级id，0表示顶级',
+  `is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除 1：删除, 0：不删除',
+  `level` int(11) NOT NULL COMMENT '标识层级',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COMMENT='菜单表'
+
+#创建博客内容表
+CREATE TABLE `blog_detail` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `menu_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '所属目录的id',
+  `title` varchar(120) NOT NULL DEFAULT '' COMMENT '标题',
+  `content` text NOT NULL COMMENT '正文',
+  `is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除 1：删除, 0：不删除',
+  `update_time` timestamp NOT NULL COMMENT '更新时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  KEY idx_title (title),
+  KEY idx_menu_id (menu_id)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4 COMMENT='内容表'

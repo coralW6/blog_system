@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     url(r'^getBlogDirList', views.getBlogDirList),
-
+    url(r'^getMenuList', views.getMenuList),
+    url(r'^saveBlog', views.saveBlog),
 ]

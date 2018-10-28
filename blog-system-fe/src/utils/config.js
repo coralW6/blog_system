@@ -19,7 +19,12 @@ const config = {
     // 服务地址
     SERVER_HOST: path,
     PATHS: {
+        //获取目录结构
         getBlogDirList: rootPath + '/getBlogDirList',
+        //保存博客
+        saveBlog: rootPath + '/saveBlog',
+        //管理中心获取目录结构
+        getMenuList: rootPath + '/getMenuList'
     },
 };
 

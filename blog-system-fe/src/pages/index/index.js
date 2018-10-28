@@ -1,5 +1,4 @@
 
-import Vue from 'vue'
 import blogService from '../../utils/services';
 import config from '../../utils/config';
 export default {
