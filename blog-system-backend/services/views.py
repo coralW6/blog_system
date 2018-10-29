@@ -80,7 +80,6 @@ def getMenuList(request):
 
     return JsonResponse(ret, safe=False)
 
-@csrf_exempt
 def saveBlog(request):
     params = request.body
     params = json.loads(params)
@@ -96,5 +95,31 @@ def saveBlog(request):
     ret = {
         "code": 0,
         "data": {"status": status}
+    }
+    return JsonResponse(ret, safe=False)
+
+def getBlogList(request):
+    params = request.body
+    params = json.loads(params)
+    menu_id = params.get("menuId")
+    print "222", menu_id
+    blog_list = []
+    list_sql = """
+        select id, menu_id, title, content, create_time from blog_system.blog_detail where is_del=0 and menu_id=%s order by create_time desc
+    """ % menu_id
+    ret_list = dbutil.execute(list_sql)
+    for (id, menu_id, title, content, create_time) in ret_list:
+        item = {
+            "id": id,
+            "menuId": menu_id,
+            "title": title,
+            "content": content,
+            "createTime": create_time
+        }
+        blog_list.append(item)
+
+    ret = {
+        "code": 0,
+        "data": {"blogList": blog_list}
     }
     return JsonResponse(ret, safe=False)

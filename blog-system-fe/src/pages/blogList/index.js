@@ -1,88 +1,43 @@
+import blogService from '../../utils/services';
+import config from '../../utils/config';
 
 export default {
     data: function() {
         return {
             params: 0,
-            blogList: [
-                {
-                    id: 1,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {   
-                    id: 2,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {
-                    id: 3,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {
-                    id: 4,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {
-                    id: 5,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {
-                    id: 6,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {
-                    id: 7,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                },
-                {
-                    id: 8,
-                    title: "Layout_百度百科",
-                    createTime: "2018/09/01",
-                    brief: "Layout，动画专用名称，根据导演（或者其他人）所画的分镜表画出来的“设计图”，原画要根据Layout来画。Layout集成了分镜头的六要素：空间关系、镜头运动、镜头时间、分解动作...",
-                    commentCount: 10,
-                }
-            ]
+            blogList: [],
         }
     }, 
-    updated() {
-        this.updateForcus();
-        
-    },
+    // updated() {
+    //     this.updateForcus();
+    // },
   
     mounted() {//载入时调用，F5刷新会起效
-        this.updateForcus();
+        this.initBlogList();
     },
 
     beforeRouteUpdate(to, from, next){
         next();
-        this.updateForcus();
+        this.initBlogList();
     },
 
     methods: {
-        updateForcus() {
+        initBlogList() {
+            var me = this;
             // console.log(">>>>>>>>>>>>>>>>>", this.$route);
             var params = this.$route.params;
-            console.log("params", params);
-            this.params = params;
+            var menuId = params.id;
+            console.log(menuId);
+            blogService.sendRequest({
+                url: config.PATHS.getBlogList,
+                method: "POST",
+                data: {
+                    menuId: menuId
+                },
+                doneHandler: function(backendData) {
+                    me.blogList = backendData.blogList;
+                }
+            });
         },
 
         showDetail(id) {

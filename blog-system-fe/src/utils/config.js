@@ -24,7 +24,9 @@ const config = {
         //保存博客
         saveBlog: rootPath + '/saveBlog',
         //管理中心获取目录结构
-        getMenuList: rootPath + '/getMenuList'
+        getMenuList: rootPath + '/getMenuList',
+        //获取文章列表
+        getBlogList: rootPath + '/getBlogList',
     },
 };
 
