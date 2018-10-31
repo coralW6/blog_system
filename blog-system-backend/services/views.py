@@ -1,13 +1,16 @@
 #!/usr/bin/env python
 # coding=utf8
 
+import sys
 from django.http import HttpResponse, JsonResponse
 import json
 import MySQLdb
 
 from django.views.decorators.csrf import csrf_exempt
-
 from utils import dbutil
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def getBlogDirList(request):
     print request
@@ -109,11 +112,12 @@ def getBlogList(request):
     """ % menu_id
     ret_list = dbutil.execute(list_sql)
     for (id, menu_id, title, content, create_time) in ret_list:
+        print content, create_time
         item = {
             "id": id,
             "menuId": menu_id,
             "title": title,
-            "content": content,
+            "brief": str(content)[0:300] + "...",
             "createTime": create_time
         }
         blog_list.append(item)

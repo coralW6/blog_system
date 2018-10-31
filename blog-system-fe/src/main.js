@@ -7,13 +7,16 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-// import '../mock/mock.js'
+
+import '../mock/mock.js'
 
 // 引入路由
 import router from "./router/index.js"    // import router 的router 一定要小写， 不要写成Router, 否则报 can't match的报错
 
 Vue.use(ElementUI)
 Vue.use(mavonEditor)
+// Vue.use(marked)
+
 
 new Vue({
   el: '#app',

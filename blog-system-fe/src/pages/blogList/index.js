@@ -1,5 +1,7 @@
 import blogService from '../../utils/services';
 import config from '../../utils/config';
+import marked from 'marked';
+
 
 export default {
     data: function() {
@@ -46,6 +48,9 @@ export default {
                 params: { id },
             });
             console.log("showDetail", id);
+        },
+        compiledMarkdown: function(content) {
+            return marked(content);
         }
-    }
+    },
 }
