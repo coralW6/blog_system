@@ -1,20 +1,42 @@
+import blogService from '../../utils/services';
+import config from '../../utils/config';
+import marked from 'marked';
+
 export default {
     data: function() {
         return {
-            
+            title: "",
+            content: "",
         }
     }, 
-    updated() {//路径及按键操作时调用
-        this.updateForcus();
-    },
   
     mounted() {//载入时调用，F5刷新会起效
-        this.updateForcus();
+        this.initBlogDetail();
     },
 
+    // created(){
+    //     console.log(">>>>created")
+    //     this.initBlogDetail();
+    // },
+
     methods: {
-        updateForcus() {
-            console.log(">>>>>", this.$route.path);
+        initBlogDetail() {
+            var me = this;
+            var params = this.$route.params;
+            var blogId = params.id;
+            console.log(">>>>>", blogId);
+            blogService.sendRequest({
+                url: config.PATHS.getBlogDetail,
+                method: "POST",
+                data: {
+                    blogId: blogId
+                },
+                doneHandler: function(backendData) {
+                    me.title = backendData.title;
+                    me.content = marked(backendData.content);
+                }
+            });
         }
+        
     }
 }

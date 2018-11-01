@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^getMenuList', views.getMenuList),
     url(r'^saveBlog', views.saveBlog),
     url(r'^getBlogList', views.getBlogList),
+    url(r'^getBlogDetail', views.getBlogDetail),
 
 ]

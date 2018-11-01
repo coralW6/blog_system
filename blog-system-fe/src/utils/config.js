@@ -27,6 +27,9 @@ const config = {
         getMenuList: rootPath + '/getMenuList',
         //获取文章列表
         getBlogList: rootPath + '/getBlogList',
+        //获取文章详情
+        getBlogDetail: rootPath + '/getBlogDetail',
+        
     },
 };
 

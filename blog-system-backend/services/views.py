@@ -127,3 +127,29 @@ def getBlogList(request):
         "data": {"blogList": blog_list}
     }
     return JsonResponse(ret, safe=False)
+
+def getBlogDetail(request):
+    params = request.body
+    params = json.loads(params)
+    blog_id = params.get("blogId")
+    print "222", blog_id
+    item = {}
+    blog_sql = """
+        select id, menu_id, title, content, create_time from blog_system.blog_detail where is_del=0 and id=%s
+    """ % blog_id
+    ret = dbutil.execute(blog_sql)
+    for (id, menu_id, title, content, create_time) in ret:
+        print content, create_time
+        item = {
+            "id": id,
+            "menuId": menu_id,
+            "title": title,
+            "content": str(content),
+            "createTime": create_time
+        }
+
+    ret = {
+        "code": 0,
+        "data": item
+    }
+    return JsonResponse(ret, safe=False)
