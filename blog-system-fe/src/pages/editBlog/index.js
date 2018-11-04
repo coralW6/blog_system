@@ -80,6 +80,13 @@ export default {
                     }
                 });
             }
+        },
+        back() {
+            console.log("back");
+            this.$emit('refreshAdmin');
+            // this.$router.push({
+            //     name: "admin",
+            // });
         }
         
     }

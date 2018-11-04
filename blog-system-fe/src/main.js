@@ -15,8 +15,6 @@ import router from "./router/index.js"    // import router 的router 一定要�
 
 Vue.use(ElementUI)
 Vue.use(mavonEditor)
-// Vue.use(marked)
-
 
 new Vue({
   el: '#app',

@@ -23,11 +23,16 @@
                                 <span>{{ item.name }}</span>
                             </template>
                             <el-menu-item v-if="item.childrenList != null" v-bind:key="childrenItem.id" v-for="childrenItem in item.childrenList" :index="childrenItem.index">
+                                <i class="el-icon-tickets"></i>
                                 {{ childrenItem.name }}
                             </el-menu-item>
                             <el-submenu v-if="item.childrenDir != null" class="el-submenu" :index="item.childrenDir.index">
-                                <template slot="title">{{ item.childrenDir.name }}</template>
+                                <template slot="title">
+                                    <i class="el-icon-document"></i>
+                                    {{ item.childrenDir.name }}
+                                </template>
                                 <el-menu-item v-bind:key="grandsonItem.id" v-for="grandsonItem in item.childrenDir.childrenList" :index="grandsonItem.index">
+                                    <i class="el-icon-tickets"></i>
                                     {{ grandsonItem.name }}
                                 </el-menu-item>
                             </el-submenu>

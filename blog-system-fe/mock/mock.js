@@ -5,6 +5,7 @@ const mockRoutes = [
     require("./saveBlog").route,
     require("./getMenuList").route,
     require("./getBlogList").route,
+    require("./getBlogDetail").route,
 
 ];
 

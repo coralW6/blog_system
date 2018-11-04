@@ -5,21 +5,24 @@ export default {
             showBlogList: true,
             dirId: 0,
             loginClickCount: 0,
-            isLogin: true,
+            isLogin: false,
             isShow: true,
         }
-    }, 
-    updated() {//路径及按键操作时调用
-        this.updateForcus();
     },
   
     mounted() {//载入时调用，F5刷新会起效
-        this.updateForcus();
+        console.log("mounted");
+        // this.initAdmin();
     },
 
     methods: {
-        updateForcus() {
+        initAdmin() {
+            var me = this;
+            console.log("initAdmin: isShow ", me.isShow);
+            me.isLogin = true;
+            me.isShow = true;
         },
+
         createBlog(id = 0) {
             this.isShow = false;
             this.$router.push({
@@ -34,6 +37,15 @@ export default {
             else {
                 this.loginClickCount += 1;
             }
+        },
+        addMenu() {
+            console.log("添加目录");
+        },
+        editMenu() {
+            console.log("编辑目录");
+        },
+        editBlog() {
+            console.log("编辑博客");
         }
     }
 }

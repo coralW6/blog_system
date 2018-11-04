@@ -33,6 +33,8 @@ export default {
                 },
                 doneHandler: function(backendData) {
                     me.title = backendData.title;
+                    me.createTime = backendData.createTime;
+                    me.pageView = backendData.pageView;
                     me.content = marked(backendData.content);
                 }
             });

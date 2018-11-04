@@ -8,6 +8,8 @@ import MySQLdb
 
 from django.views.decorators.csrf import csrf_exempt
 from utils import dbutil
+from datetime import datetime
+from utils import timeutil
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -112,12 +114,13 @@ def getBlogList(request):
     """ % menu_id
     ret_list = dbutil.execute(list_sql)
     for (id, menu_id, title, content, create_time) in ret_list:
-        print content, create_time
+        print create_time
+        content = str(content).replace("#", " ").replace("*", " ").replace("`", " ")
         item = {
             "id": id,
             "menuId": menu_id,
             "title": title,
-            "brief": str(content)[0:300] + "...",
+            "brief": str(content)[0:400] + "...",
             "createTime": create_time
         }
         blog_list.append(item)
@@ -139,13 +142,15 @@ def getBlogDetail(request):
     """ % blog_id
     ret = dbutil.execute(blog_sql)
     for (id, menu_id, title, content, create_time) in ret:
-        print content, create_time
+        print create_time, type(create_time)
+        show_time = timeutil.datetime2str(create_time, "%s年%s月%s日 %s:%s:%s")
         item = {
             "id": id,
             "menuId": menu_id,
             "title": title,
             "content": str(content),
-            "createTime": create_time
+            "createTime": show_time,
+            "pageView": 100,
         }
 
     ret = {
