@@ -25,7 +25,7 @@ SECRET_KEY = '4n%mec$7$5kj5@!-rd1z!n$mv7&c18ug3u_4n4p2gvj=*3y++i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "dist/static")
