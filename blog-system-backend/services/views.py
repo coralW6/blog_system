@@ -158,3 +158,42 @@ def getBlogDetail(request):
         "data": item
     }
     return JsonResponse(ret, safe=False)
+
+def addMenu(request):
+    params = request.body
+    params = json.loads(params)
+    parent_id = int(params.get("parentId"))
+    name = params.get("menuName")
+    print parent_id, name
+    level = 1 if parent_id == 0 else 2
+
+    insert_menu_sql = """
+        insert into blog_system.blog_menu (name, parent_id, level) values ("%s", %s, %s)
+    """ % (MySQLdb.escape_string(name), parent_id, level)
+    count = dbutil.stat(insert_menu_sql)
+
+    status = 1 if count >= 1 else 0
+    ret = {
+        "code": 0,
+        "data": {"status": status}
+    }
+    return JsonResponse(ret, safe=False)
+
+def editMenu(request):
+    params = request.body
+    params = json.loads(params)
+    id = int(params.get("id"))
+    name = params.get("menuName")
+    print id, name
+
+    update_menu_sql = """
+        update blog_system.blog_menu set name="%s" where id=%s
+    """ % (MySQLdb.escape_string(name), id)
+    count = dbutil.stat(update_menu_sql)
+
+    status = 1 if count >= 1 else 0
+    ret = {
+        "code": 0,
+        "data": {"status": status}
+    }
+    return JsonResponse(ret, safe=False)

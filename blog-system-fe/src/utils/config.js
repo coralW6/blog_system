@@ -29,7 +29,10 @@ const config = {
         getBlogList: rootPath + '/getBlogList',
         //获取文章详情
         getBlogDetail: rootPath + '/getBlogDetail',
-        
+        //添加菜单
+        addMenu: rootPath + '/addMenu',
+        //修改菜单
+        editMenu: rootPath + '/editMenu',
     },
 };
 

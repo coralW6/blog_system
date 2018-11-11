@@ -8,9 +8,9 @@
                 <div class="index">管理中心</div>
                 <div class="login" v-on:click="login()"></div>
             </el-header>
-            <el-main class="main-content">
-                <div v-if="isLogin">
-                    <el-aside v-if="isShow" class="left-aside" width="300px">
+            <div v-if="isLogin">
+                <el-container class="main">
+                    <el-aside v-if="isShowAdminMenu" class="left-aside" width="200px">
                         <el-menu :router="false" class="el-menu-vertical">
                             <el-submenu index="0">
                                 <template slot="title">
@@ -42,10 +42,12 @@
                             </el-submenu>
                         </el-menu>
                     </el-aside>
-                    <router-view v-else v-on:refreshAdmin="initAdmin"></router-view>
-                </div>
-                <div v-else>没有权限</div>
-            </el-main>
+                    <el-main class="main-content">
+                        <router-view v-if="isShowRoute" v-on:refreshAdmin="initAdmin"></router-view>
+                    </el-main>
+                </el-container>
+            </div>
+            <div v-else>没有权限</div>
         </el-container>
     </div>
 </template>

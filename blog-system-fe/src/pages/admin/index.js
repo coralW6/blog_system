@@ -6,7 +6,8 @@ export default {
             dirId: 0,
             loginClickCount: 0,
             isLogin: false,
-            isShow: true,
+            isShowAdminMenu: true,
+            isShowRoute: true,
         }
     },
   
@@ -18,13 +19,15 @@ export default {
     methods: {
         initAdmin() {
             var me = this;
-            console.log("initAdmin: isShow ", me.isShow);
+            console.log("initAdmin: isShowAdminMenu ", me.isShowAdminMenu);
             me.isLogin = true;
-            me.isShow = true;
+            me.isShowAdminMenu = true;
+            me.isShowRoute = false;
         },
 
         createBlog(id = 0) {
-            this.isShow = false;
+            this.isShowAdminMenu = false;
+            this.isShowRoute = true;
             this.$router.push({
                 name: "editBlog",
                 params: { id },
@@ -40,9 +43,18 @@ export default {
         },
         addMenu() {
             console.log("添加目录");
+            this.isShowRoute = true;
+            this.$router.push({
+                name: "addMenu",
+            });
         },
+
         editMenu() {
             console.log("编辑目录");
+            this.isShowRoute = true;
+            this.$router.push({
+                name: "editMenu",
+            });
         },
         editBlog() {
             console.log("编辑博客");
